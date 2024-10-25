@@ -78,10 +78,10 @@ a {
 .nav-btn {
     font-family: inherit;
     font-size: inherit;
+    color: inherit;
     border: none;
     padding: 0.7rem 3.5rem;
     border-radius: 0.5rem;
-    /* background-color: var(--color-gray); */
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
     cursor: pointer;
 }
@@ -123,11 +123,13 @@ a {
 
     .nav-menu.active {
         left: 0;
+        width: 100%;
     }
 
     .nav-btn.active {
         left: 0;
         top: 250px;
+        text-align: center;
     }
 
     
