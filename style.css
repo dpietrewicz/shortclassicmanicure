@@ -1,7 +1,13 @@
+:root {
+    --color-font: #464646;
+    --color-gray: #e5e3e4;
+    --color-dark: #00000031;
+    --color-gray-light: #d0d0d0;
+}
+
 * {
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
 }
 
 html {
@@ -10,85 +16,183 @@ html {
 }
 
 body {
-    font-family: "Libre Franklin", sans-serif;
-    font-weight: 300;
-    color: #444;
-    line-height: 1.9;
-    background-color: #f3f3f3;
-    min-height: 200rem;
+    font-family: "Cormorant Garamond", serif;
+    min-height: 100vh;
 }
 
 /* NAVIGATION */
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 9rem;
-    width: 100%;
-    padding: 0 6rem;
-    z-index: 100;
-}
 
-/* nav and stickly class at the same time */
-
-.nav.sticky {
-    position: fixed;
-    background-color: rgba(255, 255, 255, 0.95);
-}
-
-.nav__logo {
-    height: 25rem;
-    transition: all 0.3s;
-}
-
-.nav__links {
-    display: flex;
-    align-items: center;
+li {
     list-style: none;
 }
 
-.nav__item {
-    margin-left: 4rem;
-}
-
-.nav__link:link,
-.nav__link:visited {
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: inherit;
-    text-transform: uppercase;
+a {
     text-decoration: none;
-    display: block;
-    transition: all 0.3s;
 }
 
-.nav__link--btn:link,
-.nav__link--btn:visited {
+.navbar {
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+    
+}
+
+.nav-logo {
+    height: 60px;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+.nav-link{
+    transition: 0.7s ease;
+    color: var(--color-font);
+}
+
+.nav-link:hover{
+    color: #d0d0d0
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--color-font)
+}
+
+.nav-btn {
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
     padding: 0.7rem 3.5rem;
     border-radius: 0.5rem;
-    background-color: var(--color-primary);
-    color: #222;
+    /* background-color: var(--color-gray); */
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    cursor: pointer;
 }
 
-.nav__link--btn:hover,
-.nav__link--btn:active {
-    color: inherit;
-    background-color: var(--color-primary-darker);
-    color: #333;
+@media(max-width: 768px){
+    .hamburger{
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+   
+
+    .nav-menu,
+    .nav-btn {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        gap: 0;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .nav-item {
+        margin: 16px 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-btn.active {
+        left: 0;
+        top: 250px;
+    }
+
+    
 }
 
-.header__title {
-    position: relative;
+/*
+
+.cookies__container {
+    width: 1600px;
+    margin: auto;
 }
 
-h1 {
-    position: absolute;
-    font-size: 5.5rem;
-    line-height: 1.1;
-    bottom: 45px;
-    left: 70px;
-    color: var(--color-primary-darker);
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 400;
-    font-style: normal;
+.cookies__subcontainer {
+    width: 85%;
+    margin: auto;
 }
+
+#cookies {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    color: var(--color-gray);
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+     display: none;
+}
+
+.cookies {
+    font-size: 1.8rem;
+    font-weight: 500;
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.cookies a {
+    color: bisque;
+    font-size: 1.6rem;
+    font-weight: 300;
+}
+
+#cookies__btn {
+    border-radius: 5px;
+    padding: 8px 12px 8px 12px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    border: 3px solid var(--color-dark);
+    background-color: var(--color-dark);
+    color: var(--color-gray-light);
+}
+
+@media (max-width: 1600px) {
+    .cookies__container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .cookies {
+        padding: 10px 0;
+    }
+}
+*/
